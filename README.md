@@ -7,3 +7,5 @@ Instructions:
 
 The chessboard is designed using HTML and CSS, providing a clean and visually pleasing interface. The board highlights valid moves when a player selects a piece.
 
+Players can easily move their pieces using the drag-and-drop functionality. Clicking and holding a piece with the mouse can be dragged to the desired square on the board. Upon release, the piece will be placed on the new square.
+
