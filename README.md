@@ -9,3 +9,8 @@ The chessboard is designed using HTML and CSS, providing a clean and visually pl
 
 Players can easily move their pieces using the drag-and-drop functionality. Clicking and holding a piece with the mouse can be dragged to the desired square on the board. Upon release, the piece will be placed on the new square.
 
+<h1>How to use it</h1>
+Open the terminal
+Then clone the repo using
+git clone https://github.com/Priman-Gresli/mini-game.git
+
