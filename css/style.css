@@ -1,0 +1,163 @@
+body{
+
+    position: relative;
+    min-height: 100vh;
+    /*flex-direction: column;*/
+    background-image: url("/img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /*overflow: hidden;*/
+}
+
+#gameBody{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*left: 50%;*/
+    /*right: 50%;*/
+    /*transform: translate(-50%);*/
+    /*height: 100%;*/
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+}
+
+#gameBoard{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.square{
+    height: 75px;
+    width: 75px;
+    position: relative !important;
+
+}
+.square svg{
+    height: 55px;
+    width: 55px;
+    padding: 10px;
+    position: relative !important;
+    z-index: -9 !important;
+    background-color: transparent !important;
+
+}
+path{
+
+    position: relative !important;
+    z-index: -10 !important;
+}
+.pieces{
+    position: relative !important;
+    z-index: 9 !important;
+}
+.score-bord{
+    font-size: 20px;
+    color: white;
+}
+.info-detail{
+    color: white;
+}
+
+
+.beige{
+    background-color: rgb(134, 134, 127);
+}
+.brown{
+    background-color: rgb(66, 15, 15);
+}
+.black{
+    fill: black;
+}
+.white{
+    fill: white;
+}
+#counter{
+    margin-left: 100px;
+    width: 300px;
+    height: 300px;
+    font-size: 40px;
+    font-weight: bold;
+
+}
+.hide{
+
+    visibility: hidden !important;
+}
+
+.startPosition{
+    background-color: rgba(26, 58, 10) !important;
+
+}
+.targetPath{
+    background-color: rgb(6, 176, 33);
+
+}
+
+@media all and (max-width: 992px) {
+
+    body{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+       #gameBody{
+           flex-direction: column;
+       }
+    #gameBoard{
+        width: 480px;
+        height: 480px;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+    .square{
+        height: 60px;
+        width: 60px;
+        position: relative !important;
+
+    }
+    .square svg{
+        height: 40px;
+        width: 40px;
+        padding: 10px;
+
+    }
+    p{
+        font-size: 20px;
+    }
+
+}
+
+
+#gameOver{
+    z-index: 1000000;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#gameOver p{
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+}
+
+#gameOver form button{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    font-weight: bold;
+}

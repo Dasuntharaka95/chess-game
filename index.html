@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chees Game</title>
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="./node_modules/jquery-ui/dist/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script defer src="./node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+    <script defer src="./js/pieces.js"></script>
+    <script defer src="./js/main.js"></script>
+</head>
+<body>
+<div id="gameBody">
+
+    <div id="counter">
+        <div id="infor">
+        <p class="score-bord" >Black player Score: <span id="black_score">0</span></p>
+        <p class="score-bord" >White player Score: <span id="white_score">0</span></p>
+        <p class="info-detail" >It is <span id="player"></span>'s go.</p>
+        <p class="info-detail"  id="info-display"></p>
+        </div>
+    </div>
+</div>
+<div id="gameOver" >
+    <p id="last-page" class="animate__animated">Congratulations: <span id="winner"></span></p>
+    <form>
+    <button id="try-again">Game Start</button>
+    </form>
+</div>
+
+</body>
+</html>
