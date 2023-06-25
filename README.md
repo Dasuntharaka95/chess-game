@@ -12,5 +12,5 @@ Players can easily move their pieces using the drag-and-drop functionality. Clic
 <h1>How to use it</h1>
 Open the terminal
 Then clone the repo using
-git clone https://github.com/Priman-Gresli/mini-game.git
+git clone https://github.com/Dasuntharaka95/chess-game.git
 
