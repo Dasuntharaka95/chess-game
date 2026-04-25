@@ -12,10 +12,29 @@
     <script defer src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script defer src="./node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
     <script defer src="./js/pieces.js"></script>
+    <script defer src="./js/bot.js"></script>
     <script defer src="./js/main.js"></script>
 </head>
 <body>
-<div id="gameBody">
+<div id="modeSelect">
+    <div id="modeSelectInner">
+        <h1 id="modeTitle">Chess Game</h1>
+        <p id="modeSubtitle">Choose your game mode</p>
+        <div id="modeButtons">
+            <button class="mode-btn" id="btn-2player">
+                <span class="mode-icon">&#9823;&#9817;</span>
+                <span class="mode-label">2 Players</span>
+                <span class="mode-desc">Play with a friend</span>
+            </button>
+            <button class="mode-btn" id="btn-bot">
+                <span class="mode-icon">&#9822;</span>
+                <span class="mode-label">vs Bot</span>
+                <span class="mode-desc">Challenge the AI</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div id="gameBody" class="hide">
 
     <div id="counter">
         <div id="infor">

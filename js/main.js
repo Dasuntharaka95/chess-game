@@ -5,6 +5,7 @@ const lastPageInfo = $('#winner');
 const btnGameStartAgain = $('#try-again');
 const gameBody = $('#gameBody');
 const gameOver = $('#gameOver');
+const modeSelect = $('#modeSelect');
 
 const WIDTH = 8;
 const TOTAL_SQUARES = WIDTH * WIDTH;
@@ -14,6 +15,8 @@ playerDisplay.text('black');
 let winner = "";
 let blackScore = 0;
 let whiteScore = 0;
+let gameMode = '2player';
+let botThinking = false;
 
 const PIECE_VALUES = {
   pawn: 10,
@@ -36,6 +39,23 @@ const startPieces = [
 ];
 
 gameOver.addClass("hide");
+
+// --- Mode Selection ---
+
+$('#btn-2player').on('click', function() {
+  gameMode = '2player';
+  startGame();
+});
+
+$('#btn-bot').on('click', function() {
+  gameMode = 'bot';
+  startGame();
+});
+
+function startGame() {
+  modeSelect.addClass('hide');
+  gameBody.removeClass('hide');
+}
 
 let startPositionId;
 let draggedElement;
@@ -115,6 +135,8 @@ function clickView(e) {
 }
 
 function dragStart(e) {
+  if (botThinking) return;
+  if (gameMode === 'bot' && playerGo === 'white') return;
   clickView(e);
   startPositionId = e.target.parentNode.getAttribute('square-id');
   startPositionSquare = e.target.parentNode;
@@ -273,7 +295,9 @@ function dragDrop(e) {
       e.target.parentNode.append(draggedElement);
       e.target.remove();
       changePlayer();
-      checkWin();
+      if (!checkWin()) {
+        triggerBotMove();
+      }
       return;
     }
     if (taken && !takenByOpponent) {
@@ -284,7 +308,9 @@ function dragDrop(e) {
     if (valid) {
       e.currentTarget.append(draggedElement);
       changePlayer();
-      checkWin();
+      if (!checkWin()) {
+        triggerBotMove();
+      }
     }
   }
 }
@@ -358,6 +384,43 @@ function disableAllDragging() {
   document.querySelectorAll('.square').forEach(sq => {
     sq.firstChild?.setAttribute('draggable', false);
   });
+}
+
+// --- Bot Move ---
+
+function triggerBotMove() {
+  if (gameMode !== 'bot') return;
+  if (playerGo !== 'white') return;
+
+  botThinking = true;
+  infoDisplay.text("Bot is thinking...");
+
+  setTimeout(() => {
+    const move = findBestMove();
+    if (!move) {
+      botThinking = false;
+      infoDisplay.text("");
+      return;
+    }
+
+    const fromSquare = move.fromSquare;
+    const toSquare = move.toSquare;
+    const piece = move.pieceElement;
+
+    if (move.capturedElement) {
+      addScore(move.capturedElement.id);
+      $('#black_score').text(blackScore);
+      $('#white_score').text(whiteScore);
+      move.capturedElement.remove();
+    }
+
+    toSquare.appendChild(piece);
+
+    changePlayer();
+    botThinking = false;
+    infoDisplay.text("");
+    checkWin();
+  }, 600);
 }
 
 // --- Game Over Screen ---
